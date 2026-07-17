@@ -1,11 +1,11 @@
-(ns ainori.methods.test-pooled-route
+(ns ainori.methods.pooled-route-test
   "test_pooled_route — pins ainori's pooled sequencing to the REUSED todoke route core.
 
   1:1 Clojure port of methods/test_pooled_route.py (stdlib unittest → clojure.test).
 
   The headline test (`test-parity-with-todoke`) is the proof of ADR-2606071500's reuse claim:
   on a shared fixture, ainori's `sequence-stops` returns the SAME visiting order as todoke's
-  `plan-last-mile`. If anyone forks a second routing engine into ainori, this test breaks.
+  public `sequence-stops`. If anyone forks a second routing engine into ainori, this test breaks.
 
   Two Python tests are object-IDENTITY assertions with no Clojure analogue:
     - `test_reuses_todoke_primitives` (`pr.Stop IS todoke.Stop`) — there is no Stop class in the
@@ -33,7 +33,7 @@
 (deftest test-parity-with-todoke
   (let [stops (fixture)
         [order-a len-a] (pr/sequence-stops stops)
-        [order-t len-t] (todoke/plan-last-mile stops :sae-level 4 :commanded-mps 1.5)]
+        [order-t len-t] (todoke/sequence-stops stops)]
     (is (= order-a order-t))                       ; SAME engine, not a fork
     (is (< (Math/abs (- (double len-a) (double len-t))) 1e-9))))
 
@@ -41,7 +41,7 @@
   ;; sequence-stops delegates to the actual todoke engine (identity of result order/length).
   (let [stops (fixture)
         [order-a len-a] (pr/sequence-stops stops)
-        [order-t len-t] (todoke/plan-last-mile stops)]
+        [order-t len-t] (todoke/sequence-stops stops)]
     (is (= order-a order-t))
     (is (< (Math/abs (- (double len-a) (double len-t))) 1e-9))))
 
@@ -95,4 +95,4 @@
   (is (= 600000 (pr/cost-share 1200000 2)))
   (is (= 333333 (pr/cost-share 1000000 3))))       ; floor-division (G1)
 
-#?(:clj (defn -main [& _] (run-tests 'ainori.methods.test-pooled-route)))
+#?(:clj (defn -main [& _] (run-tests 'ainori.methods.pooled-route-test)))

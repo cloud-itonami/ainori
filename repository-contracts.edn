@@ -1,0 +1,24 @@
+{:contracts/version 1
+ :contracts
+ [{:contract/id :routing/sequence-stops
+   :repository "https://github.com/etzhayyim/com-etzhayyim-todoke"
+   :revision "6b028d3700b1cee6d838284fa6c8914031cde38c"
+   :namespace todoke.methods.last-mile
+   :var sequence-stops
+   :purpose "Deterministic envelope-neutral nearest-neighbour plus 2-opt sequencing"}
+  {:contract/id :mobility/fleet-supervision
+   :repository "https://github.com/etzhayyim/com-etzhayyim-tazuna"
+   :revision "efb4688fd8abf8e058c3c082b8d1ba482cd10bc3"
+   :usage :declared-integration}
+  {:contract/id :social/publication
+   :repository "https://github.com/etzhayyim/com-etzhayyim-social-publication"
+   :revision "e8127d0661284b1c12ce1b216c84b5ed2db619ab"
+   :namespace etzhayyim.social.publication}
+  {:contract/id :mobility/autonomous-ground
+   :repository "https://github.com/etzhayyim/com-etzhayyim-wadachi"
+   :revision "44fb5f545c17ba09ad02da501fac42a63c1124bc"
+   :usage :declared-integration}
+  {:contract/id :settlement/warifu
+   :status :unresolved
+   :usage :intent-only
+   :note "No etzhayyim/com-etzhayyim-warifu repository exists at migration time; live settlement remains gated."}]}

@@ -31,16 +31,17 @@
 
  :actor/cells
  [{:cell/id "pool_match"     :cell/kind :langgraph :cell/runtime :wasm   :cell/doc "ride-need → pooled match (occupancy-maximizing, Murakumo)"}
-  {:cell/id "route_sequence" :cell/kind :rust      :cell/runtime :wasm   :cell/method "methods/pooled_route.py:sequence_stops"
-                             :cell/doc "WIRED to todoke route core (methods/pooled_route reuses todoke methods/last_mile NN+2-opt); parity-pinned by methods/test_pooled_route.py"}
-  {:cell/id "safety_envelope":cell/kind :rust      :cell/runtime :wasm   :cell/method "py/agent.py:safety_envelope_ok"
+  {:cell/id "route_sequence" :cell/kind :clojure   :cell/runtime :wasm   :cell/method "ainori.methods.pooled-route/sequence-stops"
+                             :cell/doc "Delegates to todoke's pinned public envelope-neutral route sequencer"}
+  {:cell/id "safety_envelope":cell/kind :clojure   :cell/runtime :wasm   :cell/method "ainori.methods.agent/safety-envelope-ok"
                              :cell/doc "ainori VEHICULAR SAE-L4 refusal envelope (G3) — actor-specific (NOT todoke's pedestrian ODD); sequencing is shared, envelope is not"}
   {:cell/id "settle"         :cell/kind :datalog   :cell/runtime :kotoba :cell/doc "cost-share split + USDC + TitheRouter via warifu (intent-only at R0)"}]
 
  :actor/reuses
- {:crate  "20-actors/todoke/route"            ;; Rust route core (deployed runtime)
-  :module "20-actors/ainori/methods/pooled_route.py"  ;; reuses todoke methods/last_mile sequencing primitives
-  :note   "WIRED: ainori sequences pooled stops via todoke's NN+2-opt core (parity-pinned, test_pooled_route.py). ainori adds passenger/occupancy semantics + its OWN vehicular envelope; only the charter-neutral sequencer is shared, not a second engine."}
+ {:repository "https://github.com/etzhayyim/com-etzhayyim-todoke"
+  :revision "6b028d3700b1cee6d838284fa6c8914031cde38c"
+  :var todoke.methods.last-mile/sequence-stops
+  :note "ainori adds passenger/occupancy semantics and its own vehicular envelope; only the charter-neutral sequencer is shared."}
 
  :actor/lexicons
  ["com.etzhayyim.ainori.rideRequest"

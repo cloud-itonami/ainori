@@ -1,4 +1,4 @@
-(ns ainori.methods.test-agent
+(ns ainori.methods.agent-test
   "test_agent — ainori 相乗 test harness (clojure.test; no kotoba host needed).
 
   1:1 port of `20-actors/ainori/py/test_agent.py` (ADR-2606071500).
@@ -169,5 +169,5 @@
 
 #?(:clj
    (defn -main [& _]
-     (let [r (run-tests 'ainori.methods.test-agent)]
+     (let [r (run-tests 'ainori.methods.agent-test)]
        (System/exit (if (zero? (+ (:fail r) (:error r))) 0 1)))))

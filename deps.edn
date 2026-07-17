@@ -1,0 +1,13 @@
+{:paths ["src"]
+ :deps
+ {com.etzhayyim/todoke
+  {:git/url "https://github.com/etzhayyim/com-etzhayyim-todoke"
+   :git/sha "6b028d3700b1cee6d838284fa6c8914031cde38c"}
+  com.etzhayyim/social-publication
+  {:git/url "https://github.com/etzhayyim/com-etzhayyim-social-publication"
+   :git/sha "e8127d0661284b1c12ce1b216c84b5ed2db619ab"}}
+ :aliases
+ {:test {:extra-paths ["test"]
+         :extra-deps {io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+         :main-opts ["-m" "cognitect.test-runner"]}}}
