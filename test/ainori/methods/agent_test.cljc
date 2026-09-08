@@ -14,7 +14,7 @@
   Python source uses string-keyed dicts; Clojure port uses keyword keys.
   Expected values copied VERBATIM from py/test_agent.py."
   (:require [clojure.test :refer [deftest is testing run-tests]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [ainori.methods.agent :as agent]))
 
 ;; ── helpers ──────────────────────────────────────────────────────────────────
