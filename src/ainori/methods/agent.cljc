@@ -31,7 +31,7 @@
   gated (G10). So autonomy is preserved without a platform-held key.
 
   Pure Clojure (clojure.core + Math only), no external deps. Portable .cljc."
-  (:require [clojure.string :as str]
+  (:require [kotoba.lang.text :as str]
             [ainori.methods.pooled-route :as pr]))
 
 ;; ── constants ──────────────────────────────────────────────────────────────────
