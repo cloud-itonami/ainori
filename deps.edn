@@ -1,11 +1,10 @@
 {:paths ["src"]
  :deps
- {
-        ;; kotoba.lang.text, not clojure.string. Pinned as an explicit floor:
-        ;; tools.deps takes the NEWEST sha it is shown, so without a floor here
-        ;; this repo silently rides whatever a sibling happens to name.
-        io.github.kotoba-lang/text {:git/sha "73bdb13ae7a3d004b44bca08be03a3191157a38f"}
-       com.etzhayyim/todoke
+ {;; kotoba.lang.text, not clojure.string. Pinned as an explicit floor:
+  ;; tools.deps takes the NEWEST sha it is shown, so without a floor here
+  ;; this repo silently rides whatever a sibling happens to name.
+  io.github.kotoba-lang/text {:git/sha "73bdb13ae7a3d004b44bca08be03a3191157a38f"}
+  com.etzhayyim/todoke
   {:git/url "https://github.com/etzhayyim/com-etzhayyim-todoke"
    :git/sha "6b028d3700b1cee6d838284fa6c8914031cde38c"}
   com.etzhayyim/social-publication
