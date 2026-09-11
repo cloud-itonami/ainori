@@ -15,7 +15,7 @@
       no Clojure port; `cost-share` is inlined verbatim from py/agent.py. Ported as a value-behavior
       check against that inlined fn.
 
-  Run: bb -e \"(require 'clojure.test 'ainori.methods.test-pooled-route)
+  Run: kbb -e \"(require 'clojure.test 'ainori.methods.test-pooled-route)
                 (clojure.test/run-tests 'ainori.methods.test-pooled-route)\""
   (:require [clojure.test :refer [deftest is run-tests]]
             [ainori.methods.pooled-route :as pr]
