@@ -17,7 +17,7 @@ honest framing: できていないことは「未」と明記する。
 | # | 項目 | 状態 | 完了 |
 |---|---|---|---|
 | 1 | ADR-2606071500 + dividend coupling (2606032130) | ✅ | init |
-| 2 | manifest + CLAUDE.md + 2 Lexicons (`rideRequest` / `rideMatch`) | ✅ | init |
+| 2 | manifest + AGENTS.md + 2 Lexicons (`rideRequest` / `rideMatch`) | ✅ | init |
 | 3 | `methods/pooled_route.cljc` — todoke route core (NN+2-opt) を再利用、parity-pinned | ✅ | init |
 | 4 | `methods/test_pooled_route.cljc` green (9 tests / 16 assertions) — todoke の `plan_last_mile` 順序と一致 | ✅ | init |
 | 5 | `py/agent.py` matching + cost-share + settlement — **15 py tests green** | ✅ | init |
